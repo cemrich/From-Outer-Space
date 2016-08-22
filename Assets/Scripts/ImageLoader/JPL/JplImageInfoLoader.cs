@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using RestSharp.Contrib;
 
 
 public class JplImageInfoLoader
@@ -55,8 +56,8 @@ public class JplImageInfoLoader
 	{
 		string url = IMAGE_BASE_URL + item.images.thumb.src.Replace ("640x350", "1280x1024");
 		ImageData imageData = new ImageData (url);
-		imageData.Title = item.title;
-		imageData.Description = item.tease;
+		imageData.Title = HttpUtility.HtmlDecode (item.title);
+		imageData.Description = HttpUtility.HtmlDecode (item.tease);
 		imageData.Credit = item.credit;
 		imageData.Category = item.category;
 		imageData.Date = item.date;
