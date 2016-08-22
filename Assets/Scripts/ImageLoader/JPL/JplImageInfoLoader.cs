@@ -58,6 +58,11 @@ public class JplImageInfoLoader
 		imageData.Title = item.title;
 		imageData.Description = item.tease;
 		imageData.Credit = item.credit;
+		imageData.Category = item.category;
+		imageData.Date = item.date;
+		imageData.Mission = item.mission;
+		imageData.MissionLink = item.mission_link;
+		imageData.Views = item.views;
 		return imageData;
 	}
 }

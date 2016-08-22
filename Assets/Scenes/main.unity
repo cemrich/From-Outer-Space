@@ -269,7 +269,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Info
+  m_Text: 
 --- !u!222 &443953938
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -491,6 +491,7 @@ MonoBehaviour:
   imageMaterialRight: {fileID: 2100000, guid: 9c5b171072fd21f49bfb533ea73f309b, type: 2}
   headlineText: {fileID: 188936868}
   descriptionText: {fileID: 1447800668}
+  infoHeadline: {fileID: 443953937}
   infoText: {fileID: 1058141189}
 --- !u!20 &1336607415 stripped
 Camera:
