@@ -5,10 +5,10 @@ using System;
 public class UiManager : MonoBehaviour
 {
 	[SerializeField]
-	private Material imageMaterialLeft;
+	private MeshRenderer imageMaterialLeft;
 
 	[SerializeField]
-	private Material imageMaterialRight;
+	private MeshRenderer imageMaterialRight;
 
 	[SerializeField]
 	private Text headlineText;
@@ -31,8 +31,8 @@ public class UiManager : MonoBehaviour
 
 	void SetTexture (ImageData imageData)
 	{
-		imageMaterialLeft.mainTexture = imageData.Texture;
-		imageMaterialRight.mainTexture = imageData.Texture;
+		imageMaterialLeft.material.mainTexture = imageData.Texture;
+		imageMaterialRight.material.mainTexture = imageData.Texture;
 	}
 
 	void SetDescriptionText (ImageData imageData)

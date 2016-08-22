@@ -487,8 +487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f407964b2d963d24dbc9c0bda057fde8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  imageMaterialLeft: {fileID: 2100000, guid: db255065bd968054d87944bae59d348e, type: 2}
-  imageMaterialRight: {fileID: 2100000, guid: 9c5b171072fd21f49bfb533ea73f309b, type: 2}
+  imageMaterialLeft: {fileID: 1170016442}
+  imageMaterialRight: {fileID: 1346574569}
   headlineText: {fileID: 188936868}
   descriptionText: {fileID: 1447800668}
   infoHeadline: {fileID: 443953937}
