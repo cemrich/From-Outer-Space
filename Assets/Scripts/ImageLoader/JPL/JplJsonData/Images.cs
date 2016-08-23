@@ -1,8 +1,11 @@
-[System.Serializable]
-public class Images
+namespace ImageLoader.Jpl
 {
-	public Image thumb;
-	public Image feature;
-	public Image full;
-	public Image full_tiff;
+	[System.Serializable]
+	class Images
+	{
+		public Image thumb;
+		public Image feature;
+		public Image full;
+		public Image full_tiff;
+	}
 }

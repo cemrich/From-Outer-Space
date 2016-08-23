@@ -1,7 +1,9 @@
-[System.Serializable]
-public class Image
+namespace ImageLoader.Jpl
 {
-	public string src;
-	public string alt;
+	[System.Serializable]
+	class Image
+	{
+		public string src;
+		public string alt;
+	}
 }
-

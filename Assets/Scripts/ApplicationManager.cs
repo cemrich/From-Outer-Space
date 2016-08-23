@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-using System.Collections;
+using ImageLoader;
+using ImageLoader.Jpl;
 
 [RequireComponent (typeof(UiManager))]
 public class ApplicationManager : MonoBehaviour

@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 
-[System.Serializable]
-public class Root
+namespace ImageLoader.Jpl
 {
-
-	public List<Item> items;
-	public bool more;
+	[System.Serializable]
+	class Root
+	{
+		public List<Item> items;
+		public bool more;
+	}
 }

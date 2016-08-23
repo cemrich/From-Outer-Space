@@ -1,58 +1,61 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class JplImageLoader : AbstractImageLoader
+namespace ImageLoader.Jpl
 {
-	private JplImageInfoLoader infoLoader = new JplImageInfoLoader ();
-	private int currentImageInfo = 0;
-
-	override public void LoadNextImage ()
+	public class JplImageLoader : AbstractImageLoader
 	{
-		CancelLoading ();
-		StartCoroutine (DownloadNextImage ());
-	}
+		private JplImageInfoLoader infoLoader = new JplImageInfoLoader ();
+		private int currentImageInfo = 0;
 
-	override public void CancelLoading ()
-	{
-		StopAllCoroutines ();
-	}
-
-	IEnumerator DownloadNextImage ()
-	{
-		if (infoLoader.ImageInfo == null || currentImageInfo >= infoLoader.ImageInfo.Count) {
-			// we need to fetch a new image info list
-			// bacause we have consumed the old (or never had one)
-			yield return infoLoader.LoadNextImageInfo ();
-			currentImageInfo = 0;
+		override public void LoadNextImage ()
+		{
+			CancelLoading ();
+			StartCoroutine (DownloadNextImage ());
 		}
 
-		if (infoLoader.Error == null) {
-			ImageData nextImage = infoLoader.ImageInfo [currentImageInfo];
-			currentImageInfo++;
-			yield return DownloadAsTexture (nextImage);
-		} else {
-			if (onImageLoadingError != null) {
-				onImageLoadingError (infoLoader.Error);
+		override public void CancelLoading ()
+		{
+			StopAllCoroutines ();
+		}
+
+		IEnumerator DownloadNextImage ()
+		{
+			if (infoLoader.ImageInfo == null || currentImageInfo >= infoLoader.ImageInfo.Count) {
+				// we need to fetch a new image info list
+				// bacause we have consumed the old (or never had one)
+				yield return infoLoader.LoadNextImageInfo ();
+				currentImageInfo = 0;
+			}
+
+			if (infoLoader.Error == null) {
+				ImageData nextImage = infoLoader.ImageInfo [currentImageInfo];
+				currentImageInfo++;
+				yield return DownloadAsTexture (nextImage);
+			} else {
+				if (onImageLoadingError != null) {
+					onImageLoadingError (infoLoader.Error);
+				}
 			}
 		}
-	}
 
-	IEnumerator DownloadAsTexture (ImageData imageData)
-	{
-		Debug.Log ("[JplImageLoader] download next image: " + imageData.Url);
+		IEnumerator DownloadAsTexture (ImageData imageData)
+		{
+			Debug.Log ("[JplImageLoader] download next image: " + imageData.Url);
 
-		WWW www = new WWW (imageData.Url);
-		yield return www;
+			WWW www = new WWW (imageData.Url);
+			yield return www;
 
-		if (www.error == null) {
-			imageData.Texture = www.texture;
+			if (www.error == null) {
+				imageData.Texture = www.texture;
 
-			if (onImageLoadingComplete != null) {
-				onImageLoadingComplete (imageData);
-			}
-		} else {
-			if (onImageLoadingError != null) {
-				onImageLoadingError (www.error);
+				if (onImageLoadingComplete != null) {
+					onImageLoadingComplete (imageData);
+				}
+			} else {
+				if (onImageLoadingError != null) {
+					onImageLoadingError (www.error);
+				}
 			}
 		}
 	}
