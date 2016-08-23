@@ -14,6 +14,8 @@ public class ApplicationManager : MonoBehaviour
 		imageLoader.onImageLoadingComplete += HandleImageLoadingComplete;
 		imageLoader.onImageLoadingError += HandleImageLoadingError;
 		GvrViewer.Instance.OnTrigger += HandleCardboardTrigger;
+		GvrViewer.Instance.OnBackButton += HandleCardboardBackButton;
+
 	}
 
 	void Destroy ()
@@ -21,11 +23,17 @@ public class ApplicationManager : MonoBehaviour
 		imageLoader.onImageLoadingComplete -= HandleImageLoadingComplete;
 		imageLoader.onImageLoadingError -= HandleImageLoadingError;
 		GvrViewer.Instance.OnTrigger -= HandleCardboardTrigger;
+		GvrViewer.Instance.OnBackButton -= HandleCardboardBackButton;
 	}
 
 	void HandleCardboardTrigger ()
 	{
 		imageLoader.LoadNextImage ();
+	}
+
+	void HandleCardboardBackButton ()
+	{
+		Application.Quit ();
 	}
 
 	void HandleImageLoadingComplete (ImageData imageData)
