@@ -5,6 +5,9 @@ using System;
 public class UiManager : MonoBehaviour
 {
 	[SerializeField]
+	private Loader loader;
+
+	[SerializeField]
 	private MeshRenderer imageMaterialLeft;
 
 	[SerializeField]
@@ -22,11 +25,18 @@ public class UiManager : MonoBehaviour
 	[SerializeField]
 	private Text infoText;
 
+	public void SetLoading ()
+	{
+		loader.Show ();
+	}
+
 	public void ChangeImageData (ImageData imageData)
 	{
 		SetTexture (imageData);
 		SetDescriptionText (imageData);
 		SetInfoText (imageData);
+
+		loader.Hide ();
 	}
 
 	void SetTexture (ImageData imageData)

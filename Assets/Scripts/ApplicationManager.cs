@@ -28,6 +28,7 @@ public class ApplicationManager : MonoBehaviour
 
 	void HandleCardboardTrigger ()
 	{
+		uiManager.SetLoading ();
 		imageLoader.LoadNextImage ();
 	}
 
