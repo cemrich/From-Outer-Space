@@ -167,11 +167,17 @@ MonoBehaviour:
     m_MaxSize: 93
     m_Alignment: 3
     m_AlignByGeometry: 0
-    m_RichText: 0
+    m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.1
-  m_Text: 
+  m_Text: "<b>From Outer Space</b> loads anaglyph images from NASA/JPL\u2019s Space
+    Images website. \n\nNormally you would want to view them through specific colored
+    glasses to see the 3D effect. But here the images get separated by the app and
+    displayed slightly different for each of your eyes.\n\nUse the <b>cardboard button</b>
+    to view the next image.\n\nMake sure to browse NASA's image website at <b>www.jpl.nasa.gov/spaceimages</b>
+    to discover more images or to admire them in full resolution.\n\n<color=\"grey\">From
+    Outer Space is a non-commercial project and not approved by NASA or JPL.</color>"
 --- !u!114 &114000013030689012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +210,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: From Outer Space
 --- !u!114 &114000013938864340
 MonoBehaviour:
   m_ObjectHideFlags: 1
