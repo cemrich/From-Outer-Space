@@ -9,24 +9,34 @@ public class Loader : MonoBehaviour
 	public float fadeSpeed = 1f;
 
 	private CanvasGroup canvasGroup;
+	private IEnumerator currentFade;
 
 	public void Show ()
 	{
 		Debug.Log ("[Loader] Show");
-		StopCoroutine ("Fade");
-		StartCoroutine (Fade (1, fadeSpeed));
+		StopCurrentFade ();
+		currentFade = Fade (1, fadeSpeed);
+		StartCoroutine (currentFade);
 	}
 
 	public void Hide ()
 	{
 		Debug.Log ("[Loader] Hide");
-		StopCoroutine ("Fade");
-		StartCoroutine (Fade (0, fadeSpeed));
+		StopCurrentFade ();
+		currentFade = Fade (0, fadeSpeed);
+		StartCoroutine (currentFade);
 	}
 
 	void Start ()
 	{
 		canvasGroup = GetComponent<CanvasGroup> ();
+	}
+
+	void StopCurrentFade ()
+	{
+		if (currentFade != null) {
+			StopCoroutine (currentFade);
+		}
 	}
 
 	IEnumerator Fade (float alpha, float speed)
