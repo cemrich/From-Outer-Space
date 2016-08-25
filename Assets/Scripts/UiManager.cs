@@ -5,7 +5,10 @@ using System;
 public class UiManager : MonoBehaviour
 {
 	[SerializeField]
-	private Loader loader;
+	private OverlayManager loader;
+
+	[SerializeField]
+	private OverlayManager error;
 
 	[SerializeField]
 	private MeshRenderer imageMaterialLeft;
@@ -25,8 +28,10 @@ public class UiManager : MonoBehaviour
 	[SerializeField]
 	private Text infoText;
 
+
 	public void SetLoading ()
 	{
+		error.Hide ();
 		loader.Show ();
 	}
 
@@ -37,6 +42,20 @@ public class UiManager : MonoBehaviour
 		SetInfoText (imageData);
 
 		loader.Hide ();
+	}
+
+	public void ShowError ()
+	{
+		Debug.Log ("[UiManager] ShowError");
+		loader.Hide ();
+		error.SetText ("Error", "Please check your internet connection.");
+		error.Show ();
+	}
+
+	void Start ()
+	{
+		loader.SetupAsLoaderOverlay ();
+		error.SetupAsErrorOverlay ();
 	}
 
 	void SetTexture (ImageData imageData)

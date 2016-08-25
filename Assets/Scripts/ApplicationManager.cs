@@ -16,7 +16,6 @@ public class ApplicationManager : MonoBehaviour
 		imageLoader.onImageLoadingError += HandleImageLoadingError;
 		GvrViewer.Instance.OnTrigger += HandleCardboardTrigger;
 		GvrViewer.Instance.OnBackButton += HandleCardboardBackButton;
-
 	}
 
 	void Destroy ()
@@ -47,5 +46,6 @@ public class ApplicationManager : MonoBehaviour
 	void HandleImageLoadingError (string error)
 	{
 		Debug.Log ("[ApplicationManager] loading error: " + error);
+		uiManager.ShowError ();
 	}
 }

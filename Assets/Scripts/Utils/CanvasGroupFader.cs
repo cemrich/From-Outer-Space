@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
 [RequireComponent (typeof(CanvasGroup))]
-public class Loader : MonoBehaviour
+public class CanvasGroupFader : MonoBehaviour
 {
 	[Tooltip ("Time in seconds to fade in/out the loader.")]
 	public float fadeSpeed = 1f;
@@ -13,7 +12,7 @@ public class Loader : MonoBehaviour
 
 	public void Show ()
 	{
-		Debug.Log ("[Loader] Show");
+		Debug.Log ("[CanvasGroupFader] Show");
 		StopCurrentFade ();
 		currentFade = Fade (1, fadeSpeed);
 		StartCoroutine (currentFade);
@@ -21,7 +20,7 @@ public class Loader : MonoBehaviour
 
 	public void Hide ()
 	{
-		Debug.Log ("[Loader] Hide");
+		Debug.Log ("[CanvasGroupFader] Hide");
 		StopCurrentFade ();
 		currentFade = Fade (0, fadeSpeed);
 		StartCoroutine (currentFade);
