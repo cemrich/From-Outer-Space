@@ -12,7 +12,7 @@ public class CanvasGroupFader : MonoBehaviour
 
 	public void Show ()
 	{
-		Debug.Log ("[CanvasGroupFader] Show");
+		Debug.Log ("[CanvasGroupFader] Show " + name);
 		StopCurrentFade ();
 		currentFade = Fade (1, fadeSpeed);
 		StartCoroutine (currentFade);
@@ -20,7 +20,7 @@ public class CanvasGroupFader : MonoBehaviour
 
 	public void Hide ()
 	{
-		Debug.Log ("[CanvasGroupFader] Hide");
+		Debug.Log ("[CanvasGroupFader] Hide " + name);
 		StopCurrentFade ();
 		currentFade = Fade (0, fadeSpeed);
 		StartCoroutine (currentFade);
