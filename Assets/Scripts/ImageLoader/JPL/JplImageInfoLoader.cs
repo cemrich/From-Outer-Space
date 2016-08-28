@@ -17,7 +17,7 @@ namespace ImageLoader.Jpl
 		}
 
 		private const string JSON_BASE_URL = "http://www.jpl.nasa.gov/assets/json/getMore.php?images=true&search=anaglyph&page=";
-		private const string IMAGE_BASE_URL = "http://www.jpl.nasa.gov/";
+		private const string IMAGE_BASE_URL = "http://www.jpl.nasa.gov";
 
 		private string error = null;
 		private List<ImageData> imageDataList;
