@@ -8,6 +8,7 @@ namespace ImageLoader
 		public Action<ImageData> onImageLoadingComplete;
 		public Action onRepeatImagesNextTime;
 		public Action<string> onImageLoadingError;
+		public Action<float> onImageLoadingProgress;
 
 		public abstract void LoadNextImage ();
 

@@ -29,10 +29,11 @@ public class UiManager : MonoBehaviour
 	private Text infoText;
 
 
-	public void SetLoading ()
+	public void SetLoadingProgress (float percent)
 	{
 		error.Hide ();
 		loader.Show ();
+		loader.SetProgress (percent);
 	}
 
 	public void ChangeImageData (ImageData imageData)

@@ -11,6 +11,11 @@ namespace ImageLoader.Jpl
 		override public void LoadNextImage ()
 		{
 			CancelLoading ();
+
+			if (onImageLoadingProgress != null) {
+				onImageLoadingProgress (0);
+			}
+
 			StartCoroutine (DownloadNextImage ());
 		}
 
@@ -44,6 +49,12 @@ namespace ImageLoader.Jpl
 			Debug.Log ("[JplImageLoader] download next image: " + imageData.Url);
 
 			WWW www = new WWW (imageData.Url);
+
+			while (www.progress < 1 && onImageLoadingProgress != null) {
+				onImageLoadingProgress (www.progress);
+				yield return null;
+			}
+
 			yield return www;
 
 			if (www.error == null) {

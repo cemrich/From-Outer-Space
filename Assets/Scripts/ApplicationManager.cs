@@ -12,6 +12,7 @@ public class ApplicationManager : MonoBehaviour
 	{
 		uiManager = GetComponent<UiManager> ();
 		imageLoader = gameObject.AddComponent<JplImageLoader> ();
+		imageLoader.onImageLoadingProgress += HandleImageLoadingProgress;
 		imageLoader.onImageLoadingComplete += HandleImageLoadingComplete;
 		imageLoader.onImageLoadingError += HandleImageLoadingError;
 		GvrViewer.Instance.OnTrigger += HandleCardboardTrigger;
@@ -20,6 +21,7 @@ public class ApplicationManager : MonoBehaviour
 
 	void Destroy ()
 	{
+		imageLoader.onImageLoadingProgress -= HandleImageLoadingProgress;
 		imageLoader.onImageLoadingComplete -= HandleImageLoadingComplete;
 		imageLoader.onImageLoadingError -= HandleImageLoadingError;
 		GvrViewer.Instance.OnTrigger -= HandleCardboardTrigger;
@@ -28,13 +30,17 @@ public class ApplicationManager : MonoBehaviour
 
 	void HandleCardboardTrigger ()
 	{
-		uiManager.SetLoading ();
 		imageLoader.LoadNextImage ();
 	}
 
 	void HandleCardboardBackButton ()
 	{
 		Application.Quit ();
+	}
+
+	void HandleImageLoadingProgress (float percent)
+	{
+		uiManager.SetLoadingProgress (percent);
 	}
 
 	void HandleImageLoadingComplete (ImageData imageData)

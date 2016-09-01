@@ -5,7 +5,10 @@ using UnityEngine.UI;
 public class OverlayManager : MonoBehaviour
 {
 	[SerializeField]
-	private Image loader;
+	private Image busyLoader;
+
+	[SerializeField]
+	private Image progressLoader;
 
 	[SerializeField]
 	private Text headline;
@@ -17,16 +20,24 @@ public class OverlayManager : MonoBehaviour
 
 	public void SetupAsErrorOverlay ()
 	{
-		loader.enabled = false;
+		busyLoader.enabled = false;
+		progressLoader.enabled = false;
 		headline.enabled = true;
 		text.enabled = true;
 	}
 
 	public void SetupAsLoaderOverlay ()
 	{
-		loader.enabled = true;
+		busyLoader.enabled = true;
+		progressLoader.fillAmount = 0;
+		progressLoader.enabled = true;
 		headline.enabled = false;
 		text.enabled = false;
+	}
+
+	public void SetProgress (float percent)
+	{
+		progressLoader.fillAmount = percent;
 	}
 
 	public void SetText (string headline, string text)

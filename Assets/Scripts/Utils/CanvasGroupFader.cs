@@ -9,10 +9,16 @@ public class CanvasGroupFader : MonoBehaviour
 
 	private CanvasGroup canvasGroup;
 	private IEnumerator currentFade;
+	private bool isShowing = false;
 
 	public void Show ()
 	{
+		if (isShowing) {
+			return;
+		}
+
 		Debug.Log ("[CanvasGroupFader] Show " + name);
+		isShowing = true;
 		StopCurrentFade ();
 		currentFade = Fade (1, fadeSpeed);
 		StartCoroutine (currentFade);
@@ -20,7 +26,12 @@ public class CanvasGroupFader : MonoBehaviour
 
 	public void Hide ()
 	{
+		if (!isShowing) {
+			return;
+		}
+
 		Debug.Log ("[CanvasGroupFader] Hide " + name);
+		isShowing = false;
 		StopCurrentFade ();
 		currentFade = Fade (0, fadeSpeed);
 		StartCoroutine (currentFade);
